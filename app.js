@@ -1,8 +1,11 @@
 var express = require('express')
 var path = require('path')
+var mongoose=require('mongoose')
 var bodyParser=require("body-parser")
 var port = process.env.PORT || 3000
 var app = express()
+
+mongoose.connect('mongodb://localhost/imooc')
 
 app.set('views', './views/pages')
 app.set('view engine', 'pug')
