@@ -17,6 +17,7 @@ html(lang='en')
 					.container-fluid
 						.navbar-header
 							button.navbar-toggle.collapsed(type="button", data-toggle="collapse", href="/admin/list")
+							button.btn.btn-danger.del(type="button") 删除
 								span.sr-only Toggle navigation
 								span.icon-bar
 								span.icon-bar
@@ -26,51 +27,52 @@ html(lang='en')
 					h1.text-center 监造一组组织结构及日常管理
 
 
-			.container-fluid
-				.row
-					p
-						span.text-left 组长：刘诚波&nbsp;&nbsp;副组长：刘承波
-						span.text-right 出勤：&nbsp;&nbsp;出差：&nbsp;&nbsp;请假：
-			.container-fluid
-				.row
-					table.table.table-hover.table-bordered
-						thead
-							tr
-								th 姓  名
-								each item in name
-									td=item
-							tr
-								th 工作岗位
-								each item in job
-									td=item
-							tr
-								th 岗位职务
-								each item in position
-									td=item
-							tr
-								th 技术职称
-								each item in technicalTitle
-									td=item
-							tr
-								th 考勤
-								each item in attendance
-									td=item
+		.container
+			.row
+				p
+					span.text-left.pull-left 组长：刘诚波&nbsp;&nbsp;副组长：刘承波
+					span.text-right.pull-right 出勤：&nbsp;&nbsp;出差：&nbsp;&nbsp;请假：
+		.container-fluid
+			.row
+				table.table.table-hover.table-bordered
+					thead
+						tr.success
+							th 姓  名
+							each item in name
+								td=item
+						tr
+							th 工作岗位
+							each item in job
+								td=item
+						tr
+							th 岗位职务
+							each item in position
+								td=item
+						tr
+							th 技术职称
+							each item in technicalTitle
+								td=item
+						tr
+							th 考勤
+							each item in attendance
+								td=item
 
 			.container-fluid
 				h2.text-center 综合信息
 				.row
 					.col-lg-4
-						h1 济铁精神
+						h2.red 济铁精神
 						p.
-							强基达标，提质增效
+							强基达标，提质增效 </br>
 							厚德敬业，实干先行
 					.col-lg-4
-						h1 济铁精神
+						h2.red 监造红线
 						p.
-							强基达标，提质增效
-							厚德敬业，实干先行						
+							1、签认不合格产品记录,</br>
+								出具不真实监造报告。</br>
+							2、监造范围漏监造。		
 					.col-lg-4
-						h1 济铁精神
+						h2 济铁精神
 						p.
-							强基达标，提质增效
+							强基达标，提质增效</br>
 							厚德敬业，实干先行
