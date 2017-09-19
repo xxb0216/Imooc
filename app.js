@@ -135,6 +135,22 @@ app.post('/admin/movie/new',function(req, req){
 	}
 })
 
+//admin page
+app.get('/admin/movie',function(req,res){
+	res.render('admin',{
+		title:'demo1 后台录入页',
+		movie:{
+			director:'',
+			country:'',
+			title:'',
+			year:'',
+			poster:'',
+			language:'',
+			flash:'',
+			summary:''
+		}
+	})
+})
 
 //jgyjjllist page
 app.get('/admin/jgyjjllist',function(req,res){
@@ -189,19 +205,9 @@ app.get('/admin/jgyjjllist',function(req,res){
 	})
 })
 
-//admin page
-app.get('/admin/movie',function(req,res){
-	res.render('admin',{
-		title:'demo1 后台录入页',
-		movie:{
-			director:'',
-			country:'',
-			title:'',
-			year:'',
-			poster:'',
-			language:'',
-			flash:'',
-			summary:''
-		}
+// qdjzxmb page
+app.get('/qdjzxmb',function(req,res){
+	res.render('qdjzxmb',{
+		title:'检修动车组验收动态'
 	})
 })
