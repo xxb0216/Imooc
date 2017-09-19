@@ -139,7 +139,7 @@ app.post('/admin/movie/new',function(req, req){
 //jgyjjllist page
 app.get('/admin/jgyjjllist',function(req,res){
 	res.render('jgyjjllist',{
-		title:'竣工移交记录显示页',
+		title:'检修动车组验收动态',
 			jgyjjls:[{
 				_id:1,
 				chexing:'CRH2A',
