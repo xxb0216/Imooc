@@ -1,6 +1,8 @@
 var express = require('express')
 var path = require('path')
-var mongoose=require('mongoose')
+var mongoose = require('mongoose')
+var _ =require('underscore')
+var Movie=require('./models/movie.js')
 var bodyParser=require("body-parser")
 var port = process.env.PORT || 3000
 var app = express()
@@ -20,80 +22,104 @@ console.log('imooc started on port ' + port)
 
 //index page
 app.get('/',function(req,res){
-res.render('index',{
-title:'demo1 首页1',
-movies:[{
-title:'钢铁侠1',
-_id:1,
-poster:'https://img3.doubanio.com/view/photo/photo/public/p725871004.jpg'
-},{
-title:'钢铁侠2',
-_id:2,
-poster:'https://img3.doubanio.com/view/photo/photo/public/p725871004.jpg'
-},{
-title:'钢铁侠3',
-_id:3,
-poster:'https://img3.doubanio.com/view/photo/photo/public/p725871004.jpg'
-},{
-title:'钢铁侠4',
-_id:4,
-poster:'https://img3.doubanio.com/view/photo/photo/public/p725871004.jpg'
-},{
-title:'钢铁侠5',
-_id:5,
-poster:'https://img3.doubanio.com/view/photo/photo/public/p725871004.jpg'
-},{
-title:'钢铁侠6',
-_id:6,
-poster:'https://img3.doubanio.com/view/photo/photo/public/p725871004.jpg'
-}]
-});
-});
+	Movie.fetch(function(err, movies){
+		if (err){
+			console.log(err)
+		}
+		res.render('index',{
+			title:'demo1 首页1',
+			movies:movies
+		})
+	})
+})
 
 //detail page
 app.get('/movie/:id',function(req,res){
-res.render('detail',{
-title:'demo1 详情页',
-movie:{
-director:'javan',
-country:'china',
-title:'钢铁侠',
-year:2014,
-poster:'http://r3.ykimg.com/05160000530EEB63675839160D0B79D5',
-language:'chinese',
-flash:'http://player.youku.com/player.php/sid/XNjA1Njc0NTUy/v.swf',
-summary:'中国制造中国制造中国制造中国制造中国制造中国制造中国制造中国制造中国制造'
-}
-});
-});
+	var id = req.params.id
+
+	Movie.findById(id, function(err, movie){
+		res.render('detail',{
+			title: 'imooc'+movie.title,
+			movie: movie
+		})
+	})
+})
 
 //list page
 app.get('/admin/list',function(req,res){
+	Movie.fetch(function(err, movies){
+		if (err){
+			console.log(err)
+		}
+		res.render('index',{
+			title:'demo1 首页1',
+			movies:movies
+		})
+	})
 res.render('list',{
 title:'demo1 列表页',
-movies:[{
-_id:1,
-director:'javan',
-country:'china',
-title:'钢铁侠',
-year:2014,
-poster:'http://r3.ykimg.com/05160000530EEB63675839160D0B79D5',
-language:'chinese',
-flash:'http://player.youku.com/player.php/sid/XNjA1Njc0NTUy/v.swf',
-summary:'中国制造中国制造中国制造中国制造中国制造中国制造中国制造中国制造中国制造'
-},{
-_id:2,
-director:'javan',
-country:'china',
-title:'钢铁侠',
-year:2014,
-poster:'http://r3.ykimg.com/05160000530EEB63675839160D0B79D5',
-language:'chinese',
-flash:'http://player.youku.com/player.php/sid/XNjA1Njc0NTUy/v.swf',
-summary:'中国制造中国制造中国制造中国制造中国制造中国制造中国制造中国制造中国制造'
-}]
+movies: movies
 });
 });
+//admin update movie
+app.get('/admin/update/:id', function (req, res) {
+	var id = req.params.id
+
+	if (id) {
+		Movie.findById(id, function (err,movie) {
+			res.render('admin', {
+				title: 'imooc 后台更新页',
+				movie: movie
+			})
+			// body...
+		})
+	}
+	// body...
+})
+//admin post movie
+app.post('/admin/movie/new',function(req, req){
+	var id = req.body.movie._id
+	var movieObj = req.body.movie
+	var _movie
+
+	if (id !== 'undefined'){
+		Movie.findById(id, function(err, movie){
+			if (err){
+				console.log(err)
+			}
+
+			_movie= _.extend(movie, movieObj)
+			_mvoie.save(function(err, movie){
+				if (err) {
+					console.log(err)
+				}
+
+				res.redirect('/movie/'+ movie._id)
+			})
+		})
+	}
+	else {
+		_movie = new Movie({
+			director:movieObj.director,
+			title: movieObj.title,
+			country: movieObj.country,
+			language: movieObj.language,
+			year: movieObj.year,
+			poster: movieObj.poster,
+			summary: movieObj.summary,
+			flash: movieObj.flash
+		})
+
+		_movie.save(function(err,movie){
+			if (err) {
+				console.log(err)
+			}
+
+			res.redirect('/movie/'+ movie._id)
+		})
+	}
+})
+
 
 //admin page
 app.get('/admin/movie',function(req,res){
