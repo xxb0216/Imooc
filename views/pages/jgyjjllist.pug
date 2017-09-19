@@ -1,5 +1,11 @@
-extends ../layout
-
+html(lang='en')
+	head
+		meta(charset="utf-8")
+		title #{title}
+		include ../includes/head
+	body
+		include ../includes/header
+		block content
 block content
 	.container
 		.row
@@ -16,8 +22,8 @@ block content
 						th 整列下部签字时间
 						th 整列下部监造人员
 						th 竣工移交记录时间
-						th 竣工移交记录编号
-						th 竣工移交办理人员
+						th 编号
+						th 监造人员
 						th 备注
 						th 编组情况
 						th 修改
