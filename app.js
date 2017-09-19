@@ -43,6 +43,18 @@ app.get('/movie/:id',function(req,res){
 			movie: movie
 		})
 	})
+	res.render('index',{
+		title:'demo1 首页1',
+		movies:movie
+		})
+})
+
+//detail page
+app.get('/movie/:id',function(req,res){
+res.render('detail',{
+title:'demo1 详情页',
+movie:movie
+})
 })
 
 //list page
@@ -120,6 +132,59 @@ app.post('/admin/movie/new',function(req, req){
 	}
 })
 
+
+//jgyjjllist page
+app.get('/admin/jgyjjllist',function(req,res){
+res.render('jgyjjllist',{
+title:'竣工移交记录显示页',
+jgyjjls:[{
+_id:1,
+chexing:'CRH2A',
+liehao:'CRH2001',
+xiucheng:'五级修',
+peishuju:'兰州局',
+shangbuDate:'2017.9.10',
+shangbuPerson:'刘承波',
+xiabuDate:'2017.9.10',
+xiabuPerson:'肖晓斌',
+jgyjjldate:'2017.9.10',
+jgyjjlSN:'091JLJ103201709005',
+jgyjjlPerson:'肖晓斌',
+beizhu:'肖晓斌',
+bianzu:'9月19日编组'
+},{
+_id:1,
+chexing:'CRH2A',
+liehao:'CRH2001',
+xiucheng:'五级修',
+peishuju:'兰州局',
+shangbuDate:'2017.9.10',
+shangbuPerson:'刘承波',
+xiabuDate:'2017.9.10',
+xiabuPerson:'肖晓斌',
+jgyjjldate:'2017.9.10',
+jgyjjlSN:'091JLJ103201709005',
+jgyjjlPerson:'肖晓斌',
+beizhu:'肖晓斌',
+bianzu:'9月19日编组'
+},{
+_id:1,
+chexing:'CRH2A',
+liehao:'CRH2001',
+xiucheng:'五级修',
+peishuju:'兰州局',
+shangbuDate:'2017.9.10',
+shangbuPerson:'刘承波',
+xiabuDate:'2017.9.10',
+xiabuPerson:'肖晓斌',
+jgyjjldate:'2017.9.10',
+jgyjjlSN:'091JLJ103201709005',
+jgyjjlPerson:'肖晓斌',
+beizhu:'肖晓斌',
+bianzu:'9月19日编组'
+}]
+});
+});
 
 //admin page
 app.get('/admin/movie',function(req,res){
