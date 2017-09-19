@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			table.table.table-hover.table-bordered
+				thead
+					tr
+						th 车型
+						th 列号
+						th 修程
+						th 配属局
+						//-th 录入时间
+						th 整列上部签字时间
+						th 整列上部监造人员
+						th 整列下部签字时间
+						th 整列下部监造人员
+						th 竣工移交记录时间
+						th 竣工移交记录编号
+						th 竣工移交办理人员
+						th 备注
+						th 编组情况
+						th 修改
+						th 删除
+					tbody
+						each item in jgyjjls
+							tr(class="item-id-"+item._id)
+								td #{item.chexing}
+								td #{item.liehao}
+								td #{item.xiucheng}
+								td #{item.peishuju}
+								td #{item.shangbuDate}
+								td #{item.shangbuPerson}
+								td #{item.xiabuDate}
+								td #{item.xiabuPerson}
+								td #{item.jgyjjldate}
+								td #{item.jgyjjlSN}
+								td #{item.jgyjjlPerson}
+								td #{item.beizhu}
+								td #{item.bianzu}								
+								//-td #{moment(item.meat.createdAt).format('MM/DD/YYYY')}
+								td: a(target="_blank", href="../admin/update/"+item._id)  修改
+								td
+									button.btn.btn-danger.del(type="button", data-id=item._id) 删除
