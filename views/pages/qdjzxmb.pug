@@ -6,11 +6,12 @@ html(lang='en')
 		title #{title}
 		include ../includes/head
 	body
-		- var name=['小小彬','邵文伯','邵文伯','邵文伯','邵文伯','邵文伯','邵文伯','邵文伯','邵文伯','邵文伯','邵文伯','邵文伯']
-		- var job=['luocheng','dianqi','dianqi','dianqi','dianqi','dianqi','dianqi','dianqi','dianqi','dianqi','dianqi','dianqi']
-		- var position=['jianzaoshi','建造师','建造师','建造师','建造师','建造师','建造师','建造师','建造师','建造师','建造师','建造师']
-		- var technicalTitle=['zhugong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong']
-		- var attendance=['zhugong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong','gaogong']
+		- var name=['刘诚波','肖晓斌','宋微','刘承波','邵文波','赵晓春','梁立鹏','孙中文','邹开','陈辉刚','孙大森','王慧']
+		- var job=['落成1','落成2','落成3','电气1','电气2','电气3','转向架1','转向架2','转向架3','车体1','车体2','综合管理']
+		- var position=['监造代表','监造师','监造师','监造代表','监造师','监造代表','监造师','监造师','监造师','监造代表','监造师','监造师']
+		- var technicalTitle=['高级工程师','助理工程师','高级工程师','高级工程师','高级工程师','工程师','高级工程师','工程师','工程师','工程师','工程师','助理工程师']
+		- var attendance=['出勤','出勤','出勤','出勤','出勤','出勤','出勤','出勤','出勤','出勤','出勤','出勤']
+
 		.container
 			.row
 				nav.navbar.navbar-default
@@ -26,12 +27,12 @@ html(lang='en')
 				.page-header
 					h1.text-center 监造一组组织结构及日常管理
 
-
-		.container
+		.container-fluid
 			.row
 				p
 					span.text-left.pull-left 组长：刘诚波&nbsp;&nbsp;副组长：刘承波
 					span.text-right.pull-right 出勤：&nbsp;&nbsp;出差：&nbsp;&nbsp;请假：
+		//- 表格主体
 		.container-fluid
 			.row
 				table.table.table-hover.table-bordered
@@ -40,39 +41,70 @@ html(lang='en')
 							th 姓  名
 							each item in name
 								td=item
-						tr
-							th 工作岗位
-							each item in job
-								td=item
-						tr
-							th 岗位职务
-							each item in position
-								td=item
-						tr
-							th 技术职称
-							each item in technicalTitle
-								td=item
-						tr
-							th 考勤
-							each item in attendance
-								td=item
-
-			.container-fluid
+						tbody
+							tr
+								th 工作岗位
+								each item in job
+									td=item
+							tr
+								th 岗位职务
+								each item in position
+									td=item
+							tr
+								th 技术职称
+								each item in technicalTitle
+									td=item
+							tr
+								th 考勤
+								each item in attendance
+									td=item
+			.row
 				h2.text-center 综合信息
-				.row
-					.col-lg-4
-						h2.red 济铁精神
-						p.
-							强基达标，提质增效 </br>
-							厚德敬业，实干先行
-					.col-lg-4
-						h2.red 监造红线
-						p.
-							1、签认不合格产品记录,</br>
-								出具不真实监造报告。</br>
-							2、监造范围漏监造。		
-					.col-lg-4
-						h2 济铁精神
-						p.
-							强基达标，提质增效</br>
-							厚德敬业，实干先行
+				.col-lg-4
+					h3.text-center.text-danger 济铁精神
+					p.text-center.text-danger.
+						强基达标，提质增效 </br>
+						厚德敬业，实干先行
+				.col-lg-4
+					h3.text-center.text-danger 监造红线
+					p.text-center.text-danger.
+						1、签认不合格产品记录,</br>
+							出具不真实监造报告。</br>
+						2、监造范围漏监造。		
+				.col-lg-4
+					h3.text-center.text-danger 济铁精神
+					p.text-center.text-danger.
+						强基达标，提质增效</br>
+						厚德敬业，实干先行
+
+
+
+			.row
+				.col-lg-4.col-lg-push-4
+					.carousel.slide#myCarousel
+						ol.carousel-indicators
+							li.active(data-target="#myCarousel" data-slide-to="0")
+							li(data-target="#myCarousel" data-slide-to="1")
+							li(data-target="#myCarousel" data-slide-to="2")
+						.carousel-inner
+							.item.active
+								.col-lg-12
+									h3.text-center.text-danger 济铁精神
+									p.text-center.text-danger.
+										强基达标，提质增效 </br>
+										厚德敬业，实干先行
+							.item
+								.col-lg-12
+									h3.text-center.text-danger 监造红线
+									p.text-center.text-danger.
+										1、签认不合格产品记录,</br>
+											出具不真实监造报告。</br>
+										2、监造范围漏监造。		
+							.item
+								.col-lg-12
+									h3.text-center.text-danger 济铁精神
+									p.text-center.text-danger.
+										强基达标，提质增效</br>
+										厚德敬业，实干先行
+						a.carousel-control.left(href="#myCarousel", data-slide="prev") &lsaquo;
+						a.carousel-control.right(href="#myCarousel", data-slide="next") &rsaquo;
