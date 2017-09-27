@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+	.container-fluid
+		.row
+			table.table.table-hover.table-bordered
+				thead
+					tr
+						th 序号
+						th 日期
+						th 生产企业
+						th 车型
+						//-th 录入时间
+						th 车种
+						th 车号
+						th 修程
+						th 部位
+						th 缺陷描述
+						th 数量
+						th 监造师
+						th 处置
+						th 编号
+						th 发出日期
+						th 关闭日期
+						th 备注
+					tbody
+						each item,i in hxtzds
+							tr(class="item-id-"+item._id)
+								td #{i+1}
+								td #{item.date}
+								td #{item.company}
+								td #{item.chexing}
+								td #{item.chezhong}
+								td #{item.chehao}
+								td #{item.xiucheng}
+								td #{item.buwei}
+								td #{item.defectContent}
+								td #{item.quantity}
+								td #{item.person}
+								td #{item.chuzhi}
+								td #{item.SN}
+								td #{item.issueDate}
+								td #{item.closedDate}
+								td #{item.remarks}
+								//-td #{moment(item.meat.createdAt).format('MM/DD/YYYY')}
+								td(style="display:none;"): a(target="_blank", href="../hxtzd/update/"+item._id)  修改
+								td(style="display:none;")
+									button.btn.btn-danger.del(type="button", data-id=item._id) 删除

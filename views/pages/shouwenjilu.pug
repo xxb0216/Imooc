@@ -4,6 +4,20 @@ block content
 	.container
 		.row
 			h3.text-center.text-danger 部门收文台账
+			ul.nav.nav-tabs.nav-justified
+				li.active
+					a(href='#') 部局函
+				li
+					a(href='#') 部局电
+				li
+					a(href='#') 部局文件
+				li
+					a(href='#') 济南局通知
+				li
+					a(href='#') 电话备忘
+				li
+					a(href='#') 设备监造处通知
+
 			table.table.table-hover.table-bordered
 				thead
 					tr
@@ -15,9 +29,9 @@ block content
 						th 份数
 						th 日期
 					tbody
-						each item in receivedDocuments
+						each item,i in receivedDocuments
 							tr(class="item-id-"+item._id)
-								td #{item._id}
+								td #{i}
 								td #{item.docName}
 								td #{item.docStyle}
 								td #{item.docYear}

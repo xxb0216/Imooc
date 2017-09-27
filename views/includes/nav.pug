@@ -1,0 +1,34 @@
+nav.navbar.navbar-default.navbar-fixed-bottom(role='navigation')
+	.container-fluid
+		.navbar-header
+			button.navbar-toggle(type='button', data-toggle='collapse', data-target='#example-navbar-collapse')
+				span.sr-only 切换导航
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			a.navbar-brand(href='../') 青岛监造项目部
+		#example-navbar-collapse.collapse.navbar-collapse
+			ul.nav.navbar-nav
+				li.active
+					a(href='/jiaban') 加班申请
+				li
+					a(href='/jgyjjllist') 竣工移交记录
+				li.dropdown
+					a.dropdown-toggle(href='#', data-toggle='dropdown')
+						| 日常工作 
+						b.caret
+					ul.dropdown-menu
+						li
+							a(href='/hxtzdlist') 回修通知单
+						li
+							a(href='/shouwenjilu') 收文记录
+						li
+							a(href='#') Jasper Report
+						li.divider
+						li
+							a(href='#') 风险库识别
+						li
+							a(href='#') 月度风险库落实
+						li.divider
+						li
+							a(href='#') 其他

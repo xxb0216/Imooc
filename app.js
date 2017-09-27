@@ -15,25 +15,37 @@ var receivedDocuments=[{
 				docNO:'112号',
 				docNum:'1',
 				docDate:'9月12日'
-			},{
-				_id:2,
-				docName:'中国铁路总公司运输局关于印发CRH2E纵向布置卧铺动车组设计方案评审意见的通知',
-				docStyle:'铁总运函',
-				docYear:'[2017]',
-				docNO:'115号',
-				docNum:'1',
-				docDate:'9月14日'
-			},{
-				_id:3,
-				docName:'中国铁路总公司运输局关于印发CRH2E纵向布置卧铺动车组设计方案评审意见的通知',
-				docStyle:'铁总运函',
-				docYear:'[2017]',
-				docNO:'114号',
-				docNum:'1',
-				docDate:'9月14日'
+			}]
+var overTimeWorkApplication=[{
+				_id:1,
+				branch:'总装',
+				task:'新造动车组湖南长株潭第一列',
+				style:'节假日加班',
+				time:'2017.09.25 16：40-20：00',
+				isInspected:'是',
+				remarks:'若有异常顺延次日'
+			}]
+var hxtzds=[{
+				_id:1,
+				date:'9.12',
+				company:'四方股份',
+				chexing:'CRH380AL',
+				chezhong:'',
+				chehao:'2638',
+				xiucheng:'五级修',
+				buwei:'整车落成',
+				defectContent:'油漆不良',
+				quantity:3,
+				person:'肖晓斌',
+				chuzhi:'回修通知单',
+				SN:'0901',
+				issueDate:"9.12",
+				closedDate:'9.13',
+				remarks:'C'
 			}]
 
-//mongoose.connect('mongodb://localhost/imooc')
+var url = 'mongodb://localhost/imooc';
+mongoose.createConnection(url);
 
 app.set('views', './views/pages')
 app.set('view engine', 'pug')
@@ -46,16 +58,25 @@ app.listen(port)
 
 console.log('imooc started on port ' + port)
 
-//index page
+// //index page
+// app.get('/',function(req,res){
+// 	Movie.fetch(function(err, movies){
+// 		if (err){
+// 			console.log(err)
+// 		}
+// 		res.render('index',{
+// 			title:'demo1 首页1',
+// 			movies:movies
+// 		})
+// 	})
+// })
+
+// 监造项目部展示页 index page
 app.get('/',function(req,res){
-	Movie.fetch(function(err, movies){
-		if (err){
-			console.log(err)
-		}
-		res.render('index',{
-			title:'demo1 首页1',
-			movies:movies
-		})
+	res.render('qdjzxmb',{
+		title:'青岛机车车辆监造项目部',
+			overTimeWorkApplication:overTimeWorkApplication,
+			receivedDocuments:receivedDocuments
 	})
 })
 
@@ -74,14 +95,6 @@ app.get('/movie/:id',function(req,res){
 		title:'demo1 首页1',
 		movies:movie
 		})
-})
-
-//detail page
-app.get('/movie/:id',function(req,res){
-	res.render('detail',{
-		title:'demo1 详情页',
-		movie:movie
-	})
 })
 
 //list page
@@ -178,8 +191,8 @@ app.get('/admin/movie',function(req,res){
 	})
 })
 
-//jgyjjllist page
-app.get('/admin/jgyjjllist',function(req,res){
+//竣工移交记录表 jgyjjllist page
+app.get('/jgyjjllist',function(req,res){
 	res.render('jgyjjllist',{
 		title:'检修动车组验收动态',
 			jgyjjls:[{
@@ -231,59 +244,28 @@ app.get('/admin/jgyjjllist',function(req,res){
 	})
 })
 
-// 监造项目部展示页 qdjzxmb page
-app.get('/qdjzxmb',function(req,res){
-	res.render('qdjzxmb',{
-		title:'青岛机车车辆监造项目部',
-			overTimeWorkApplication:[{
-				_id:1,
-				branch:'总装',
-				task:'新造动车组湖南长株潭第一列',
-				style:'节假日加班',
-				time:'2017.09.25 16：40-20：00',
-				isInspected:'是',
-				remarks:'若有异常顺延次日'
-			},{
-				_id:2,
-				branch:'转向架',
-				task:'新造动车组湖南长株潭二',
-				style:'双休日加班',
-				time:'2017.09.25 16：40-20：00',
-				isInspected:'是',
-				remarks:'若有异常顺延次日'
-			}],
-			receivedDocuments:receivedDocuments
-	})
-})
+
 
 // 加班情况 jiban page
-app.get('/qdjzxmb/jiaban',function(req,res){
+app.get('/jiaban',function(req,res){
 	res.render('jiaban',{
 		title:'加班申请情况',
-			overTimeWorkApplication:[{
-				_id:1,
-				branch:'总装',
-				task:'新造动车组湖南长株潭第一列',
-				style:'节假日加班',
-				time:'2017.09.25 16：40-20：00',
-				isInspected:'是',
-				remarks:'若有异常顺延次日'
-			},{
-				_id:2,
-				branch:'转向架',
-				task:'新造动车组湖南长株潭二',
-				style:'双休日加班',
-				time:'2017.09.25 16：40-20：00',
-				isInspected:'是',
-				remarks:'若有异常顺延次日'
-			}]
+			overTimeWorkApplication:overTimeWorkApplication
 	})
 })
 
-// 加班情况 shouwenjilu page
-app.get('/qdjzxmb/shouwenjilu',function(req,res){
+// 收文记录 shouwenjilu page
+app.get('/shouwenjilu',function(req,res){
 	res.render('shouwenjilu',{
 		title:'部门收文记录台账',
 			receivedDocuments:receivedDocuments
+	})
+})
+
+//回修通知单统计表 hxtzdlist page
+app.get('/hxtzdlist',function(req,res){
+	res.render('hxtzdlist',{
+		title:'回修通知单统计表',
+			hxtzds:hxtzds
 	})
 })
