@@ -7,6 +7,32 @@ var bodyParser=require("body-parser")
 var port = process.env.PORT || 3000
 var app = express()
 
+var receivedDocuments=[{
+				_id:1,
+				docName:'中国铁路总公司关于广铁集团海',
+				docStyle:'铁总运函',
+				docYear:'[2017]',
+				docNO:'112号',
+				docNum:'1',
+				docDate:'9月12日'
+			},{
+				_id:2,
+				docName:'中国铁路总公司运输局关于印发CRH2E纵向布置卧铺动车组设计方案评审意见的通知',
+				docStyle:'铁总运函',
+				docYear:'[2017]',
+				docNO:'115号',
+				docNum:'1',
+				docDate:'9月14日'
+			},{
+				_id:3,
+				docName:'中国铁路总公司运输局关于印发CRH2E纵向布置卧铺动车组设计方案评审意见的通知',
+				docStyle:'铁总运函',
+				docYear:'[2017]',
+				docNO:'114号',
+				docNum:'1',
+				docDate:'9月14日'
+			}]
+
 //mongoose.connect('mongodb://localhost/imooc')
 
 app.set('views', './views/pages')
@@ -205,7 +231,7 @@ app.get('/admin/jgyjjllist',function(req,res){
 	})
 })
 
-// qdjzxmb page
+// 监造项目部展示页 qdjzxmb page
 app.get('/qdjzxmb',function(req,res){
 	res.render('qdjzxmb',{
 		title:'青岛机车车辆监造项目部',
@@ -225,7 +251,8 @@ app.get('/qdjzxmb',function(req,res){
 				time:'2017.09.25 16：40-20：00',
 				isInspected:'是',
 				remarks:'若有异常顺延次日'
-			}]
+			}],
+			receivedDocuments:receivedDocuments
 	})
 })
 
@@ -256,31 +283,7 @@ app.get('/qdjzxmb/jiaban',function(req,res){
 // 加班情况 shouwenjilu page
 app.get('/qdjzxmb/shouwenjilu',function(req,res){
 	res.render('shouwenjilu',{
-		title:'加班申请情况',
-			receivedDocuments:[{
-				_id:1,
-				docName:'中国铁路总公司关于广铁集团海南环岛高铁增配CEH1A-A动车组及一等座改造的批复',
-				docStyle:'铁总运函',
-				docYear:'[2017]',
-				docNO:'112号',
-				docNum:'1',
-				docDate:'9月12日'
-			},{
-				_id:2,
-				docName:'中国铁路总公司运输局关于印发CRH2E纵向布置卧铺动车组设计方案评审意见的通知',
-				docStyle:'铁总运函',
-				docYear:'[2017]',
-				docNO:'115号',
-				docNum:'1',
-				docDate:'9月14日'
-			},{
-				_id:3,
-				docName:'中国铁路总公司运输局关于印发CRH2E纵向布置卧铺动车组设计方案评审意见的通知',
-				docStyle:'铁总运函',
-				docYear:'[2017]',
-				docNO:'114号',
-				docNum:'1',
-				docDate:'9月14日'
-			}]
+		title:'部门收文记录台账',
+			receivedDocuments:receivedDocuments
 	})
 })
