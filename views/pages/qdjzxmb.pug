@@ -60,27 +60,26 @@ html(lang='en')
 									td=item
 			.row
 				h2.text-center 综合信息
-				.col-lg-4
-					h3.text-center.text-danger 济铁精神
-					p.text-center.text-danger.
-						强基达标，提质增效 </br>
-						厚德敬业，实干先行
-				.col-lg-4
-					h3.text-center.text-danger 监造红线
-					p.text-center.text-danger.
-						1、签认不合格产品记录,</br>
-							出具不真实监造报告。</br>
-						2、监造范围漏监造。		
-				.col-lg-4
-					h3.text-center.text-danger 济铁精神
-					p.text-center.text-danger.
-						强基达标，提质增效</br>
-						厚德敬业，实干先行
-
-
-			//- 轮播，未完成
+				//- .col-lg-4
+				//- 	h3.text-center.text-danger 济铁精神
+				//- 	p.text-center.text-danger.
+				//- 		强基达标，提质增效 </br>
+				//- 		厚德敬业，实干先行
+				//- .col-lg-4
+				//- 	h3.text-center.text-danger 监造红线
+				//- 	p.text-center.text-danger.
+				//- 		1、签认不合格产品记录,</br>
+				//- 			出具不真实监造报告。</br>
+				//- 		2、监造范围漏监造。		
+				//- .col-lg-4
+				//- 	h3.text-center.text-danger 济铁精神
+				//- 	p.text-center.text-danger.
+				//- 		强基达标，提质增效</br>
+				//- 		厚德敬业，实干先行
+		.container-fluid
+			//- 轮播，左侧
 			.row
-				.col-lg-4.col-lg-push-4
+				.col-lg-4
 					.carousel.slide#myCarousel
 						ol.carousel-indicators
 							li.active(data-target="#myCarousel" data-slide-to="0")
@@ -89,7 +88,103 @@ html(lang='en')
 						.carousel-inner
 							.item.active
 								.col-lg-12(style="height:300px;")
+									h3.text-center.text-danger: a(target="_blank", href="../qdjzxmb/jiaban") 加班申请 
+									table.table.table-hover.table-bordered
+										thead
+											tr
+												th 单位
+												th 加班内容
+												th 加班类型
+												th 加班时间
+												//-th 录入时间
+												th 是否交检
+												th 备注
+											tbody
+												each item in overTimeWorkApplication
+													tr(class="item-id-"+item._id)
+														td #{item.branch}
+														td #{item.task}
+														td #{item.style}
+														td #{item.time}
+														td #{item.isInspected}
+														td #{item.remarks}							
+														//-td #{moment(item.meat.createdAt).format('MM/DD/YYYY')}
+														//-未完成，待修改
+														//- td: a(target="_blank", href="../admin/update/"+item._id)  修改											
+							.item
+								.col-lg-12(style="height:300px;")
+									h3.text-center.text-danger 监造红线
+									p.text-center.text-danger.
+										1、签认不合格产品记录,</br>
+											出具不真实监造报告。</br>
+										2、监造范围漏监造。		
+							.item
+								.col-lg-12(style="height:300px;")
 									h3.text-center.text-danger 济铁精神
+									p.text-center.text-danger.
+										强基达标，提质增效</br>
+										厚德敬业，实干先行
+						a.carousel-control.left(href="#myCarousel", data-slide="prev") &lsaquo;
+						a.carousel-control.right(href="#myCarousel", data-slide="next") &rsaquo;
+
+				//- 轮播，中间
+				.col-lg-4
+					.carousel.slide#myCarousel1
+						ol.carousel-indicators
+							li.active(data-target="#myCarousel1" data-slide-to="0")
+							li(data-target="#myCarousel1" data-slide-to="1")
+							li(data-target="#myCarousel1" data-slide-to="2")
+						.carousel-inner
+							.item.active
+								.col-lg-12(style="height:300px;")
+									h3.text-center.text-danger: a(target="_blank", href="../qdjzxmb/shouwenjilu") 部门收文台账
+									table.table.table-hover.table-bordered
+										thead
+											tr
+												th 序号
+												th 文件名称
+												th 文件类型
+												th 年份
+												th 文件序号
+												th 份数
+												th 日期
+											tbody
+												each item in receivedDocuments
+													tr(class="item-id-"+item._id)
+														td #{item._id}
+														td #{item.docName}
+														td #{item.docStyle}
+														td #{item.docYear}
+														td #{item.docNO}
+														td #{item.docNum}
+														td #{item.docDate}
+							.item
+								.col-lg-12(style="height:300px;")
+									h3.text-center.text-danger 监造红线
+									p.text-center.text-danger.
+										1、签认不合格产品记录,</br>
+											出具不真实监造报告。</br>
+										2、监造范围漏监造。		
+							.item
+								.col-lg-12(style="height:300px;")
+									h3.text-center.text-danger 济铁精神
+									p.text-center.text-danger.
+										强基达标，提质增效</br>
+										厚德敬业，实干先行
+						a.carousel-control.left(href="#myCarousel1", data-slide="prev") &lsaquo;
+						a.carousel-control.right(href="#myCarousel1", data-slide="next") &rsaquo;
+
+				//- 轮播，右侧
+				.col-lg-4
+					.carousel.slide#myCarousel2
+						ol.carousel-indicators
+							li.active(data-target="#myCarousel2" data-slide-to="0")
+							li(data-target="#myCarousel2" data-slide-to="1")
+							li(data-target="#myCarousel2" data-slide-to="2")
+						.carousel-inner
+							.item.active
+								.col-lg-12(style="height:300px;")
+									h3.text-center.text-danger 安全济铁、智慧济铁、品质济铁
 									p.text-center.text-danger.
 										强基达标，提质增效 </br>
 										厚德敬业，实干先行
@@ -106,5 +201,5 @@ html(lang='en')
 									p.text-center.text-danger.
 										强基达标，提质增效</br>
 										厚德敬业，实干先行
-						a.carousel-control.left(href="#myCarousel", data-slide="prev") &lsaquo;
-						a.carousel-control.right(href="#myCarousel", data-slide="next") &rsaquo;
+						a.carousel-control.left(href="#myCarousel2", data-slide="prev") &lsaquo;
+						a.carousel-control.right(href="#myCarousel2", data-slide="next") &rsaquo;

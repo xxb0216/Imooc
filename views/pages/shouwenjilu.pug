@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			h3.text-center.text-danger 部门收文台账
+			table.table.table-hover.table-bordered
+				thead
+					tr
+						th 序号
+						th 文件名称
+						th 文件类型
+						th 年份
+						th 文件序号
+						th 份数
+						th 日期
+					tbody
+						each item in receivedDocuments
+							tr(class="item-id-"+item._id)
+								td #{item._id}
+								td #{item.docName}
+								td #{item.docStyle}
+								td #{item.docYear}
+								td #{item.docNO}
+								td #{item.docNum}
+								td #{item.docDate}							
+								//-td #{moment(item.meat.createdAt).format('MM/DD/YYYY')}
+								//-未完成，待修改
+								//- td: a(target="_blank", href="../admin/update/"+item._id)  修改

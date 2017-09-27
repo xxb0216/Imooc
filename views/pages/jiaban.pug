@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			h3.text-center.text-danger 加班申请
+			table.table.table-hover.table-bordered
+				thead
+					tr
+						th 单位
+						th 加班内容
+						th 加班类型
+						th 加班时间
+						//-th 录入时间
+						th 是否交检
+						th 备注
+					tbody
+						each item in overTimeWorkApplication
+							tr(class="item-id-"+item._id)
+								td #{item.branch}
+								td #{item.task}
+								td #{item.style}
+								td #{item.time}
+								td #{item.isInspected}
+								td #{item.remarks}							
+								//-td #{moment(item.meat.createdAt).format('MM/DD/YYYY')}
+								//-未完成，待修改
+								//- td: a(target="_blank", href="../admin/update/"+item._id)  修改
