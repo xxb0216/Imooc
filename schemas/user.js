@@ -6,7 +6,7 @@ var UserSchema = new mongoose.Schema({
 	position:String,
 	technicalTitle:String,
 	attendance:String,
-	flash:String,
+	SN:String,
 	year:Number,
 	meta: {
 		creatAt:{

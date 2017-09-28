@@ -4,10 +4,18 @@ block content
 	.container
 		.row
 			h3.text-center.text-danger 加班申请
+			ul.nav.nav-pills.nav-justified
+				li.active
+					a(href='#') 总装
+				li
+					a(href='#') 转向架
+				li
+					a(href='#') 车体
+
 			table.table.table-hover.table-bordered
 				thead
 					tr
-						th 单位
+						th 序号
 						th 加班内容
 						th 加班类型
 						th 加班时间
@@ -15,9 +23,9 @@ block content
 						th 是否交检
 						th 备注
 					tbody
-						each item in overTimeWorkApplication
+						each item,i in overTimeWorkApplication
 							tr(class="item-id-"+item._id)
-								td #{item.branch}
+								td #{i+1}
 								td #{item.task}
 								td #{item.style}
 								td #{item.time}
