@@ -128,10 +128,6 @@ app.get('/admin/list',function(req,res){
 			movies:movies
 		})
 	})
-	res.render('list',{
-		title:'demo1 列表页',
-		movies: movies
-	})
 })
 
 
