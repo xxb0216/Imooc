@@ -90,8 +90,8 @@ html(lang='en')
 												th 是否交检
 												th 备注
 											tbody
-												each item in overTimeWorkApplication
-													tr(class="item-id-"+item._id)
+												each item,i in overTimeWorkApplication
+													tr(class="item-id-"+i)
 														td #{item.branch}
 														td #{item.task}
 														td #{item.style}
@@ -139,9 +139,9 @@ html(lang='en')
 												th 份数
 												th 日期
 											tbody
-												each item in receivedDocuments
-													tr(class="item-id-"+item._id)
-														td #{item._id}
+												each item,i in receivedDocuments
+													tr(class="item-id-"+i)
+														td #{i}
 														td #{item.docName}
 														td #{item.docStyle}
 														td #{item.docYear}

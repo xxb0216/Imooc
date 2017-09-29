@@ -1,12 +1,12 @@
 var mongoose = require('mongoose')
 
-var overTimeWorkApplicationSchema = new mongoose.Schema({
-	branch:String,
-	task:String,
-	style:String,
-	time:String,
-	isInspected:String,
-	remarks:String,
+var receivedDocumentSchema = new mongoose.Schema({
+	docName:String,
+	docStyle:String,
+	docYear:String,
+	docNO:String,
+	docNum:String,
+	docDate:String,
 	meta: {
 		creatAt:{
 			type:Date,
@@ -19,7 +19,7 @@ var overTimeWorkApplicationSchema = new mongoose.Schema({
 	}
 })
 
-overTimeWorkApplicationSchema.pre('save',function(next){
+receivedDocumentSchema.pre('save',function(next){
 	if (this.isNew){
 		this.meta.creatAt = this.meta.updateAt =Date.now()
 	}
@@ -30,13 +30,14 @@ overTimeWorkApplicationSchema.pre('save',function(next){
 	next()
 })
 
-overTimeWorkApplicationSchema.statics = {
+receivedDocumentSchema.statics = {
 	fetch: function (cb) {
 		// body...
 		return this
-			.find({})
+			.find()
 //			.sort('meta.updateAt')
 			.exec(cb)
+		console.log(cb)
 	},
 	findById: function (id,cb) {
 		// body...
@@ -46,4 +47,4 @@ overTimeWorkApplicationSchema.statics = {
 	}	
 }
 
-module.exports =overTimeWorkApplicationSchema
+module.exports =receivedDocumentSchema

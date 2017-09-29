@@ -1,0 +1,4 @@
+2017-09-29T08:25:36.436+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-09-29T08:25:36.994+0800 I CONTROL  [main] Trying to install Windows service 'MongoDB'
+2017-09-29T08:25:41.862+0800 I CONTROL  [main] Service 'MongoDB' (MongoDB) installed with command line 'H:\MongoDB\bin\mongod.exe --bind_ip yourIPadress --logpath H:\github\imooc\data\dbConf\mongodb.log --logappend --dbpath H:\github\Imooc\data\db --port 27017 --service'
+2017-09-29T08:25:41.862+0800 I CONTROL  [main] Service can be started from the command line with 'net start MongoDB'

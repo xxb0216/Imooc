@@ -2,29 +2,17 @@ var express = require('express')
 var path = require('path')
 var mongoose = require('mongoose')
 var _ =require('underscore')
-var Movie=require('./models/movie.js')
+
+var Movie=require('./models/movie')
+var receivedDocument=require('./models/receivedDocument')
+var overTimeWorkApplication=require('./models/overTimeWorkApplication')
+var jgyjjls=require('./models/jgyjjl')
+
+
 var bodyParser=require("body-parser")
 var port = process.env.PORT || 3000
 var app = express()
 
-var receivedDocuments=[{
-				_id:1,
-				docName:'中国铁路总公司关于广铁集团海',
-				docStyle:'铁总运函',
-				docYear:'[2017]',
-				docNO:'112号',
-				docNum:'1',
-				docDate:'9月12日'
-			}]
-var overTimeWorkApplication=[{
-				_id:1,
-				branch:'总装',
-				task:'新造动车组湖南长株潭第一列',
-				style:'节假日加班',
-				time:'2017.09.25 16：40-20：00',
-				isInspected:'是',
-				remarks:'若有异常顺延次日'
-			}]
 var hxtzds=[{
 				_id:1,
 				date:'9.12',
@@ -44,8 +32,30 @@ var hxtzds=[{
 				remarks:'C'
 			}]
 
-var url = 'mongodb://localhost/imooc';
-mongoose.createConnection(url);
+mongoose.Promise = global.Promise;  
+var url = 'mongodb://localhost/qdjzxmb';
+mongoose.connect(url);
+
+/**
+  * 连接成功
+  */
+mongoose.connection.on('connected', function () {    
+    console.log('Mongoose connection open to ' + url);  
+}); 
+
+/**
+ * 连接异常
+ */
+mongoose.connection.on('error',function (err) {    
+    console.log('Mongoose connection error: ' + err);  
+});    
+ 
+/**
+ * 连接断开
+ */
+mongoose.connection.on('disconnected', function () {    
+    console.log('Mongoose connection disconnected');  
+}); 
 
 app.set('views', './views/pages')
 app.set('view engine', 'pug')
@@ -73,11 +83,21 @@ console.log('imooc started on port ' + port)
 
 // 监造项目部展示页 index page
 app.get('/',function(req,res){
-	res.render('qdjzxmb',{
-		title:'青岛机车车辆监造项目部',
-			overTimeWorkApplication:overTimeWorkApplication,
-			receivedDocuments:receivedDocuments
+	console.log('test')
+	overTimeWorkApplication.fetch(function(err, overTimeWorkApplication){
+		receivedDocument.fetch(function(err, receivedDocument){
+			if (err){
+				console.log(err)
+			}
+			console.log(receivedDocument)
+			res.render('qdjzxmb',{
+				title:'青岛机车车辆监造项目部',
+					overTimeWorkApplication:overTimeWorkApplication,
+					receivedDocuments:receivedDocument
+			})
+		})
 	})
+
 })
 
 //detail page
@@ -193,72 +213,45 @@ app.get('/admin/movie',function(req,res){
 
 //竣工移交记录表 jgyjjllist page
 app.get('/jgyjjllist',function(req,res){
-	res.render('jgyjjllist',{
-		title:'检修动车组验收动态',
-			jgyjjls:[{
-				_id:1,
-				chexing:'CRH2A',
-				liehao:'CRH2001',
-				xiucheng:'五级修',
-				peishuju:'兰州局',
-				shangbuDate:'2017.9.10',
-				shangbuPerson:'刘承波',
-				xiabuDate:'2017.9.10',
-				xiabuPerson:'肖晓斌',
-				jgyjjldate:'2017.9.10',
-				jgyjjlSN:'091JLJ103201709005',
-				jgyjjlPerson:'肖晓斌',
-				beizhu:'肖晓斌',
-				bianzu:'9月19日编组'
-			},{
-				_id:1,
-				chexing:'CRH2A',
-				liehao:'CRH2001',
-				xiucheng:'五级修',
-				peishuju:'兰州局',
-				shangbuDate:'2017.9.10',
-				shangbuPerson:'刘承波',
-				xiabuDate:'2017.9.10',
-				xiabuPerson:'肖晓斌',
-				jgyjjldate:'2017.9.10',
-				jgyjjlSN:'091JLJ103201709005',
-				jgyjjlPerson:'肖晓斌',
-				beizhu:'肖晓斌',
-				bianzu:'9月19日编组'
-			},{
-				_id:1,
-				chexing:'CRH2A',
-				liehao:'CRH2001',
-				xiucheng:'五级修',
-				peishuju:'兰州局',
-				shangbuDate:'2017.9.10',
-				shangbuPerson:'刘承波',
-				xiabuDate:'2017.9.10',
-				xiabuPerson:'肖晓斌',
-				jgyjjldate:'2017.9.10',
-				jgyjjlSN:'091JLJ103201709005',
-				jgyjjlPerson:'肖晓斌',
-				beizhu:'肖晓斌',
-				bianzu:'9月19日编组'
-		}]
+	jgyjjl.fetch(function(err, jgyjjls){
+		if (err){
+			console.log(err)
+		}
+		res.render('jgyjjllist',{
+			title:'检修动车组验收动态',
+				jgyjjls:jgyjjl
+		})
 	})
-})
 
+})
 
 
 // 加班情况 jiban page
 app.get('/jiaban',function(req,res){
-	res.render('jiaban',{
-		title:'加班申请情况',
-			overTimeWorkApplication:overTimeWorkApplication
+	overTimeWorkApplication.fetch(function(err, overTimeWorkApplication){
+		if (err){
+			console.log(err)
+		}
+		console.log(overTimeWorkApplication)
+		res.render('jiaban',{
+			title:'加班申请情况',
+				overTimeWorkApplication:overTimeWorkApplication
+		})
 	})
+
 })
 
 // 收文记录 shouwenjilu page
 app.get('/shouwenjilu',function(req,res){
-	res.render('shouwenjilu',{
-		title:'部门收文记录台账',
-			receivedDocuments:receivedDocuments
+	receivedDocument.fetch(function(err, receivedDocument){
+		if (err){
+			console.log(err)
+		}
+		console.log(receivedDocument)
+		res.render('shouwenjilu',{
+			title:'部门收文记录台账',
+				receivedDocuments:receivedDocument
+		})
 	})
 })
 
