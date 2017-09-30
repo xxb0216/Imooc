@@ -17,7 +17,7 @@ var overTimeWorkApplicationSchema = new mongoose.Schema({
 			default: Date.now()
 		}
 	}
-})
+},{collection:"overTimeWorkApplication"})
 
 overTimeWorkApplicationSchema.pre('save',function(next){
 	if (this.isNew){

@@ -17,7 +17,7 @@ var receivedDocumentSchema = new mongoose.Schema({
 			default: Date.now()
 		}
 	}
-})
+},{collection:"receivedDocuments"})
 
 receivedDocumentSchema.pre('save',function(next){
 	if (this.isNew){
