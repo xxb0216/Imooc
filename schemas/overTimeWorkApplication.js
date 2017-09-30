@@ -34,8 +34,8 @@ overTimeWorkApplicationSchema.statics = {
 	fetch: function (cb) {
 		// body...
 		return this
-			.find({})
-//			.sort('meta.updateAt')
+			.find().
+			.sort('meta.updateAt')
 			.exec(cb)
 	},
 	findById: function (id,cb) {
