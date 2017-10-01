@@ -1,15 +1,18 @@
 nav.navbar.navbar-default.navbar-fixed-bottom(role='navigation')
-	.container-fluid
+	.container
 		.navbar-header
 			button.navbar-toggle(type='button', data-toggle='collapse', data-target='#example-navbar-collapse')
 				span.sr-only 切换导航
 				span.icon-bar
 				span.icon-bar
 				span.icon-bar
+				span.icon-bar
 			a.navbar-brand(href='../') 青岛监造项目部
+		p.navbar-text.navbar-right
+			a.navbar-link(href="#", data-toggle="modal", data-target="#signinModal") 登录
 		#example-navbar-collapse.collapse.navbar-collapse
 			ul.nav.navbar-nav
-				li.active
+				li
 					a(href='/jiaban') 加班申请
 				li
 					a(href='/jgyjjllist') 竣工移交记录
@@ -23,12 +26,34 @@ nav.navbar.navbar-default.navbar-fixed-bottom(role='navigation')
 						li
 							a(href='/shouwenjilu') 收文记录
 						li
-							a(href='#') Jasper Report
+							a(href='#') 过程巡视检查记录
 						li.divider
 						li
-							a(href='#') 风险库识别
+							a(href='#') 风险研判及风险库
 						li
-							a(href='#') 月度风险库落实
+							a(href='#') 月度风险落实情况
 						li.divider
 						li
 							a(href='#') 其他
+
+// 模态框（Modal）
+#signinModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+				h4#signinModalLabel.modal-title 登录
+			form(method="POST", action="/user/signin")
+				.modal-body
+					form.form-horizontal(role='form')
+						.form-group
+							label.control-label(for="signinName") 用户名
+							input#signinName.form-control(name="user[name]", type='text')
+						.form-group
+							label.ontrol-label(for='signinPassword') 密码
+							input#signinPassword.form-control(name="user[password]",type='text')
+				.modal-footer
+					button.btn.btn-default(type='button', data-dismiss='modal') 关闭
+					button.btn.btn-success(type='submit') 登录
+		// /.modal-content
+		// /.modal

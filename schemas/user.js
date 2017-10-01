@@ -2,12 +2,12 @@ var mongoose = require('mongoose')
 
 var UserSchema = new mongoose.Schema({
 	name:String,
+	password: String,
 	job:String,
 	position:String,
 	technicalTitle:String,
 	attendance:String,
 	SN:String,
-	year:Number,
 	meta: {
 		creatAt:{
 			type:Date,
@@ -18,9 +18,9 @@ var UserSchema = new mongoose.Schema({
 			default: Date.now()
 		}
 	}
-})
+},{collection:"User"})
 
-MovieSchema.pre('save',function(next){
+UserSchema.pre('save',function(next){
 	if (this.isNew){
 		this.meta.creatAt = this.meta.updateAt =Date.now()
 	}
@@ -31,7 +31,7 @@ MovieSchema.pre('save',function(next){
 	next()
 })
 
-MovieSchema.statics = {
+UserSchema.statics = {
 	fetch: function (cb) {
 		// body...
 		return this

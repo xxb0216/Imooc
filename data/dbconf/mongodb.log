@@ -1,4 +1,69 @@
-2017-09-29T08:25:36.436+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
-2017-09-29T08:25:36.994+0800 I CONTROL  [main] Trying to install Windows service 'MongoDB'
-2017-09-29T08:25:41.862+0800 I CONTROL  [main] Service 'MongoDB' (MongoDB) installed with command line 'H:\MongoDB\bin\mongod.exe --bind_ip yourIPadress --logpath H:\github\imooc\data\dbConf\mongodb.log --logappend --dbpath H:\github\Imooc\data\db --port 27017 --service'
-2017-09-29T08:25:41.862+0800 I CONTROL  [main] Service can be started from the command line with 'net start MongoDB'
+2017-09-30T16:28:58.191-0700 I CONTROL  [main] Trying to start Windows service 'MongoDB'
+2017-09-30T16:28:58.192-0700 I CONTROL  [initandlisten] MongoDB starting : pid=2820 port=27017 dbpath=C:\imooc\data\db 64-bit host=DESKTOP-GESNPDA
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten] db version v3.4.9
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten] modules: enterprise 
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten] build environment:
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten]     distmod: windows-64
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten]     distarch: x86_64
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-09-30T16:28:58.193-0700 I CONTROL  [initandlisten] options: { net: { port: 27017 }, service: true, storage: { dbPath: "C:\imooc\data\db" }, systemLog: { destination: "file", logAppend: true, path: "C:\imooc\data\dbConf\mongodb.log" } }
+2017-09-30T16:28:58.198-0700 I -        [initandlisten] Detected data files in C:\imooc\data\db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-09-30T16:28:58.198-0700 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3547M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-09-30T16:28:58.585-0700 I CONTROL  [initandlisten] 
+2017-09-30T16:28:58.585-0700 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-30T16:28:58.585-0700 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-30T16:28:58.585-0700 I CONTROL  [initandlisten] 
+2017-10-01T07:28:58.915+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'C:/imooc/data/db/diagnostic.data'
+2017-10-01T07:28:58.918+0800 I STORAGE  [initandlisten] Service running
+2017-10-01T07:28:58.918+0800 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-01T07:29:07.891+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:57109 #1 (1 connection now open)
+2017-10-01T07:29:07.898+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:57109 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.15063" }, platform: "Node.js v6.11.2, LE, mongodb-core: 2.1.15" }
+2017-10-01T07:33:20.248+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:57245 #2 (2 connections now open)
+2017-10-01T07:33:23.983+0800 I -        [conn2] end connection 127.0.0.1:57245 (2 connections now open)
+2017-10-01T07:33:23.983+0800 I -        [conn1] end connection 127.0.0.1:57109 (2 connections now open)
+2017-10-01T07:33:27.410+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:57252 #3 (1 connection now open)
+2017-10-01T07:33:27.418+0800 I NETWORK  [conn3] received client metadata from 127.0.0.1:57252 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Windows_NT", name: "win32", architecture: "x64", version: "10.0.15063" }, platform: "Node.js v6.11.2, LE, mongodb-core: 2.1.15" }
+2017-10-01T14:53:19.927+0800 I -        [conn3] end connection 127.0.0.1:57252 (1 connection now open)
+2017-10-01T14:53:39.758+0800 I CONTROL  [serviceShutdown] got SERVICE_CONTROL_STOP request from Windows Service Control Manager, will terminate after current cmd ends
+2017-10-01T14:53:39.759+0800 I NETWORK  [serviceShutdown] shutdown: going to close listening sockets...
+2017-10-01T14:53:39.759+0800 I NETWORK  [serviceShutdown] closing listening socket: 584
+2017-10-01T14:53:39.759+0800 I NETWORK  [serviceShutdown] shutdown: going to flush diaglog...
+2017-10-01T14:53:39.759+0800 I FTDC     [serviceShutdown] Shutting down full-time diagnostic data capture
+2017-10-01T14:53:39.772+0800 I STORAGE  [serviceShutdown] WiredTigerKVEngine shutting down
+2017-10-01T14:53:39.961+0800 I STORAGE  [serviceShutdown] shutdown: removing fs lock...
+2017-10-01T14:53:39.961+0800 I CONTROL  [serviceShutdown] now exiting
+2017-10-01T14:53:52.733+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-01T14:53:53.245+0800 I CONTROL  [main] Trying to start Windows service 'MongoDB'
+2017-10-01T14:53:53.246+0800 I CONTROL  [initandlisten] MongoDB starting : pid=15044 port=27017 dbpath=C:\imooc\data\db 64-bit host=DESKTOP-GESNPDA
+2017-10-01T14:53:53.246+0800 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2017-10-01T14:53:53.246+0800 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-01T14:53:53.246+0800 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-01T14:53:53.246+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
+2017-10-01T14:53:53.246+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-10-01T14:53:53.247+0800 I CONTROL  [initandlisten] modules: enterprise 
+2017-10-01T14:53:53.247+0800 I CONTROL  [initandlisten] build environment:
+2017-10-01T14:53:53.247+0800 I CONTROL  [initandlisten]     distmod: windows-64
+2017-10-01T14:53:53.247+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-01T14:53:53.247+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-01T14:53:53.247+0800 I CONTROL  [initandlisten] options: { net: { port: 27017 }, service: true, storage: { dbPath: "C:\imooc\data\db" }, systemLog: { destination: "file", logAppend: true, path: "C:\imooc\data\dbConf\mongodb.log" } }
+2017-10-01T14:53:53.247+0800 I -        [initandlisten] Detected data files in C:\imooc\data\db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-01T14:53:53.248+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3547M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-10-01T14:53:53.690+0800 I CONTROL  [initandlisten] 
+2017-10-01T14:53:53.690+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-01T14:53:53.690+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-01T14:53:53.690+0800 I CONTROL  [initandlisten] 
+2017-10-01T14:53:53.914+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'C:/imooc/data/db/diagnostic.data'
+2017-10-01T14:53:53.915+0800 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-01T14:53:53.915+0800 I STORAGE  [initandlisten] Service running
+2017-10-01T14:53:56.091+0800 I CONTROL  [serviceShutdown] got SERVICE_CONTROL_STOP request from Windows Service Control Manager, will terminate after current cmd ends
+2017-10-01T14:53:56.091+0800 I NETWORK  [serviceShutdown] shutdown: going to close listening sockets...
+2017-10-01T14:53:56.091+0800 I NETWORK  [serviceShutdown] closing listening socket: 592
+2017-10-01T14:53:56.092+0800 I NETWORK  [serviceShutdown] shutdown: going to flush diaglog...
+2017-10-01T14:53:56.092+0800 I FTDC     [serviceShutdown] Shutting down full-time diagnostic data capture
+2017-10-01T14:53:56.100+0800 I STORAGE  [serviceShutdown] WiredTigerKVEngine shutting down
+2017-10-01T14:53:56.308+0800 I STORAGE  [serviceShutdown] shutdown: removing fs lock...
+2017-10-01T14:53:56.308+0800 I CONTROL  [serviceShutdown] now exiting

@@ -17,7 +17,7 @@ var jgyjjlSchema = new mongoose.Schema({
 			default: Date.now()
 		}
 	}
-})
+},{collection:"jgyjjl"})
 
 jgyjjlSchema.pre('save',function(next){
 	if (this.isNew){
