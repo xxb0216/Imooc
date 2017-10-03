@@ -40,3 +40,54 @@ block content
 				.form-group
 					.col-sm-offset-2.col-sm-10
 					button.btn.btn-default(type="submit") 录入
+
+	.container
+		.row
+			form.form-horizontal(method="post", action="/admin/jiaban/new")
+				fieldset
+					#legend
+						legend 加班申请录入
+					.control-group
+						// Select Basic
+						label.control-label 分厂
+						.controls
+							select.input-xlarge
+								option 总装
+								option 转向架
+								option 车体
+					.control-group
+						// Textarea
+						label.control-label 加班内容
+						.controls
+							.textarea
+								textarea(type='')  
+					.control-group
+						// Select Basic
+						label.control-label 加班类型
+						.controls
+							select.input-xlarge
+								option 工作日加班
+								option 双休日加班
+								option 节假日加班
+					.control-group
+						// Text input
+						label.control-label(for='input01') 加班时间
+						.controls
+							input.input-xlarge(type='text', placeholder='默认当日')
+							p.help-block 例: 2017.10.01 16:40-20:00
+					.control-group
+						// Select Basic
+						label.control-label 是否交检
+						.controls
+							select.input-xlarge
+								option 是
+								option 否
+					.control-group
+						// Text input
+						label.control-label(for='input01') 备注
+						.controls
+							input.input-xlarge(type='text', placeholder='备注')
+							p.help-block
+								// Button
+					.controls
+						button.btn.btn-success 录入

@@ -176,20 +176,38 @@ app.get('/',function(req,res){
 
 // //admin page
 // app.get('/admin/movie',function(req,res){
-// 	res.render('admin',{
-// 		title:'demo1 后台录入页',
-// 		movie:{
-// 			director:'',
-// 			country:'',
-// 			title:'',
-// 			year:'',
-// 			poster:'',
-// 			language:'',
-// 			flash:'',
-// 			summary:''
-// 		}
-// 	})
+	// res.render('admin',{
+	// 	title:'demo1 后台录入页',
+	// 	movie:{
+	// 		director:'',
+	// 		country:'',
+	// 		title:'',
+	// 		year:'',
+	// 		poster:'',
+	// 		language:'',
+	// 		flash:'',
+	// 		summary:''
+	// 	}
+	// })
 // })
+
+//管理员后台录入页 admin page
+app.get('/admin',function(req,res){
+	res.render('admin',{
+		title:'管理员后台录入页',
+		movie:{
+			director:'',
+			country:'',
+			title:'',
+			year:'',
+			poster:'',
+			language:'',
+			flash:'',
+			summary:''
+		}
+	})
+
+})
 
 //竣工移交记录表 jgyjjllist page
 app.get('/jgyjjllist',function(req,res){
